@@ -1,19 +1,18 @@
-
 # Crowdsay
 
-Polling and Voting Platform in Go (Gin)
+Plataforma de Enquetes e Votação em Go (Gin)
 
-## Description
-Crowdsay is a RESTful API for creating polls, one vote per IP, real-time results, and percentage statistics.
+## Descrição
+O Crowdsay é uma API RESTful para criação de enquetes, votação única por IP, resultados em tempo real e estatísticas percentuais.
 
 ## Endpoints
 
-### Create poll
+### Criar enquete
 `POST /polls/create`
 Body:
 ```json
 {
-	"question": "What is your favorite language?",
+	"question": "Qual sua linguagem favorita?",
 	"options": ["Go", "Python", "JavaScript"]
 }
 ```
@@ -26,7 +25,7 @@ Response:
 }
 ```
 
-### Vote in poll
+### Votar em enquete
 `POST /polls/{id}/vote`
 Body:
 ```json
@@ -34,7 +33,7 @@ Body:
 	"option": "Go"
 }
 ```
-Headers (to simulate IP):
+Headers (para simular IP):
 `X-Forwarded-For: 1.2.3.4`
 Response:
 ```json
@@ -44,14 +43,14 @@ Response:
 }
 ```
 
-### Get poll
+### Consultar enquete
 `GET /polls/{id}`
 Response:
 ```json
 {
 	"poll": {
 		"id": 1,
-		"question": "What is your favorite language?",
+		"question": "Qual sua linguagem favorita?",
 		"options": ["Go", "Python", "JavaScript"],
 		"votes": {"1.2.3.4:1": 1},
 		"results": {"Go": 1}
@@ -60,13 +59,13 @@ Response:
 }
 ```
 
-### Poll statistics (percentage)
+### Estatísticas (porcentagem)
 `GET /polls/{id}/stats`
 Response:
 ```json
 {
 	"poll_id": 1,
-	"question": "What is your favorite language?",
+	"question": "Qual sua linguagem favorita?",
 	"options": ["Go", "Python", "JavaScript"],
 	"votes": {"Go": 1},
 	"percent": {"Go": 100, "Python": 0, "JavaScript": 0},
@@ -75,7 +74,7 @@ Response:
 }
 ```
 
-### List polls
+### Listar enquetes
 `GET /polls/`
 Response:
 ```json
@@ -85,35 +84,37 @@ Response:
 }
 ```
 
-## How to run locally
+## Como rodar localmente
 
-1. Install Go 1.21+
-2. Clone the repository
-3. Install dependencies:
+1. Instale Go 1.21+
+2. Clone o repositório
+3. Instale dependências:
 	 ```bash
 	 go mod tidy
 	 ```
-4. Run the server:
+4. Rode o servidor:
 	 ```bash
 	 go run cmd/main.go
 	 ```
-5. Access http://localhost:8080
+5. Acesse http://localhost:8080
 
-## How to run with Docker
+## Como rodar com Docker
 
-1. Make sure you have Docker installed
-2. Run:
+1. Certifique-se de ter Docker instalado
+2. Rode:
 	 ```bash
 	 docker-compose up --build
 	 ```
-3. The API will be available at http://localhost:8080
+3. A API estará disponível em http://localhost:8080
 
-## Tests
+## Testes
 
-To run the tests:
+Para rodar os testes:
 ```bash
 go test ./internal/poll/...
 ```
 
 ---
-Portfolio project by Adriano JTF
+Projeto para portfólio por Adriano JTF
+# crowdsay
+Plataforma de Enquetes e Votação
